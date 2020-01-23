@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Reg Ex</title>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    
+  </head>
+  <body>
+
+	<input type = "text" id = "input"></input>
+<button type = "submit" onclick = "test()"> submit </button>
+	
+<script>
+	//we'll start this application thusly.  It scores a name.  It starts out with
+	//0 for each race, then it adds points to the race.
+	//Here are some:
+	// -space followed by "gro-" followed by more letters gives 10 points to Orc /\s(gro-|gra-)\[A-Z]/ or maybe /\s(gr(o|a)-)\[A-Z]/
+	// -ending in "ius" gives imperial points. /(ius)$/
+	// -ending in "iurz" Argonian /(iurz)$/
+	// -ending in "um" Argonian /(um)$/
+	// -double "ee" anywhere Argonian /(ee)/
+	// -hyphen gives Argonian points /\w+-\w+/
+	// -letter plus apostrophe gives Khajiit points/(i)/
+	// -ends in "i" Khajiit point /i$/
+	// -ends in "ir" Bosmer points/(ir)$/
+	// -"we" ending gives Altmer points /(we)$/
+	// -ending in "o" gives Altmer points /o$/
+	// -ending in "il" gives Altmer points/(il)$/
+
+	
+var orc = 0;
+var khajiit = 0;
+var imperial = 0;
+var argonian = 0;
+var altmer = 0;
+var bosmer = 0;
+
+function test()
+{
+
+var elInput = $("#input").val();
+
+
+
+if ( /(ee)/.test(elInput))
+{
+argonian++;
+}
+
+if (/(iurz)$/.test(elInput))
+{
+argonian++;
+}
+
+if (/(um)$/.test(elInput))
+{
+argonian++;
+}
+
+console.log("Orc: " + orc + "\n" + "Khajiit: " + khajiit + "\n" + "Argonian: " + argonian)
+}
+</script>
+
+</body>
+</html>
