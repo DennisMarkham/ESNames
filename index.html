@@ -41,30 +41,85 @@ var imperial = 0;
 var argonian = 0;
 var altmer = 0;
 var bosmer = 0;
+var invalid = 0;
 
 function test()
 {
 
 var elInput = $("#input").val();
 
+//Invalidators
+if ( /[.!?\d]/.test(elInput))
+{
+invalid++;
+}
+//examples: 2akjl$
+
+//Orc traits
+if (/\s(gr(o|a)-)[A-Z]/.test(elInput))
+{
+	orc++;
+}
+//examples: Shul gro-Drub
+//
 
 
+//Khajiit
+if (/^([A-Z]')/.test(elInput))
+{
+	khajiit++;
+}
+//examples: M'Raaj-Dar, S'Rathra
+
+if (/(i)$/.test(elInput))
+{
+	khajiit++;
+}
+//examples: Adarji, Hasabi
+//
+
+
+//Argonian traits
 if ( /(ee)/.test(elInput))
 {
 argonian++;
 }
+//examples: Ocheeva
 
 if (/(iurz)$/.test(elInput))
 {
 argonian++;
 }
+//examples: Hal-Liurz
 
 if (/(um)$/.test(elInput))
 {
 argonian++;
 }
+//examples: Weetum
 
+if (/a$/.test(elInput))
+{
+argonian++
+}
+//examples: Tienaava
+//
+
+
+if (invalid == 0)
+{	
 console.log("Orc: " + orc + "\n" + "Khajiit: " + khajiit + "\n" + "Argonian: " + argonian)
+argonian = 0;
+khajiit = 0;
+orc = 0;
+bosmer = 0;
+imperial = 0;
+}
+else
+{
+console.log("That's no name");
+invalid = 0;
+}
 }
 </script>
 
